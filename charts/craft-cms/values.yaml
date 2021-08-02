@@ -79,7 +79,7 @@ tolerations: []
 affinity: {}
 
 sqlProxy:
-  enabled: false
+  enabled: true
   image: gcr.io/cloudsql-docker/gce-proxy:1.19.1
   connectionString: cloud-native-hpc:us-central1:test
   dbName: craft
