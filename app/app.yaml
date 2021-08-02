@@ -1,0 +1,23 @@
+runtime: custom
+env: flex
+
+beta_settings:
+  cloud_sql_instances: cloud-native-hpc:us-central1:test=tcp:5432
+
+manual_scaling:
+  instances: 1
+  
+env_variables:
+  ENVIRONMENT: production
+  APP_ID: CraftCMS--d337aaa2-c2ae-4cfb-9b3d-fe0c268ff065
+  SECURITY_KEY: x5Ue5-VLPq1yFi680--L2CXGftqFcCjB
+  DB_DRIVER: pgsql
+  DB_SERVER: "172.17.0.1"
+  DB_PORT: "5432"
+  DB_DATABASE: craft
+  DB_USER: craft
+  DB_PASSWORD: craft
+  DB_SCHEMA: public
+  DB_TABLE_PREFIX: 
+  CP_TRIGGER: admin
+  PRIMARY_SITE_URL: http://cloud-native-hpc.appspot.com/

@@ -1,0 +1,22 @@
+dateModified: 1627596451
+email:
+  fromEmail: jtrouth@burwood.com
+  fromName: GAE
+  transportType: craft\mail\transportadapters\Sendmail
+meta:
+  __names__:
+    db946313-b229-465f-920f-59655c91c22d: GAE # GAE
+    eeae8555-8eef-4bd9-9940-d1c5c04a6191: Common # Common
+    f9a58a39-a54d-4169-9054-1284bae98846: GAE # GAE
+system:
+  edition: solo
+  live: true
+  name: GAE
+  schemaVersion: 3.7.7
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true
