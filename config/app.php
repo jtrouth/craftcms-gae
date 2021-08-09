@@ -30,7 +30,7 @@ return [
             'useMemcached' => true,
             // 'username' => App::env('MEMCACHED_USERNAME'),
             // 'password' => App::env('MEMCACHED_PASSWORD'),
-            'defaultDiration' => 86400,
+            'defaultDuration' => 86400,
             'servers' => [
                 [
                     'host' => App::env('MEMCACHED_IP'),
