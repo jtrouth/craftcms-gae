@@ -5,6 +5,7 @@ on:
       - main
 jobs:
   gae-deploy:
+    runs-on: ubuntu-latest
     steps:
     - id: deploy
       uses: google-github-actions/deploy-appengine@main
