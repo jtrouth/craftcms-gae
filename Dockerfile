@@ -29,5 +29,6 @@ RUN sed -ri -e 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.co
 WORKDIR /var/www/html
 COPY --chown=www-data:www-data . ./
 COPY --from=vendor --chown=www-data:www-data /app/vendor /var/www/html/vendor
+RUN chmod u+w /var/www/html/storage
 
 USER www-data
