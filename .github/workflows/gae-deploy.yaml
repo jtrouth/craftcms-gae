@@ -17,3 +17,6 @@ jobs:
         deliverables: app.yaml
         version: craft-${{ github.sha }}
         promote: false
+
+    - id: test
+      run: echo "${{ steps.deploy.outputs.url }}"
