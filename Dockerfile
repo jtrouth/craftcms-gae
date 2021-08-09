@@ -16,6 +16,7 @@ RUN pecl install imagick && \
     && docker-php-ext-enable imagick
 RUN a2enmod rewrite
 
+ENV CRAFT_STREAM_LOG true
 # Update the Apache config
 ENV APACHE_DOCUMENT_ROOT /var/www/html/web
 
@@ -29,6 +30,7 @@ RUN sed -ri -e 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.co
 WORKDIR /var/www/html
 COPY --chown=www-data:www-data . ./
 COPY --from=vendor --chown=www-data:www-data /app/vendor /var/www/html/vendor
-RUN mkdir /var/www/html/storage && chown www-data:www-data /var/www/html/storage && chmod u+w /var/www/html/storage
+RUN [ -d /var/www/html/storage ] || mkdir /var/www/html/storage \
+    && chown www-data:www-data /var/www/html/storage && chmod u+w /var/www/html/storage
 
 USER www-data

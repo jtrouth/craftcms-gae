@@ -21,3 +21,4 @@ env_variables:
   DB_TABLE_PREFIX: 
   CP_TRIGGER: admin
   PRIMARY_SITE_URL: http://cloud-native-hpc.appspot.com/
+  MEMCACHED_IP: "10.92.32.3"
