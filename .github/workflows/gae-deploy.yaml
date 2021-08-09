@@ -11,6 +11,7 @@ jobs:
       uses: actions/checkout@v2
           
     - id: deploy
+      name: Deploy to App Engine
       uses: google-github-actions/deploy-appengine@main
       with:
         credentials: ${{ secrets.gcp_credentials }}
@@ -18,5 +19,6 @@ jobs:
         version: ${{ github.sha }}
         promote: false
 
-    - id: test
+    - id: echo-url
+      name: Echo Version URL
       run: echo "${{ steps.deploy.outputs.url }}"
