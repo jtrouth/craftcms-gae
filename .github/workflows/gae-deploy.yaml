@@ -15,7 +15,7 @@ jobs:
       with:
         credentials: ${{ secrets.gcp_credentials }}
         deliverables: app.yaml
-        version: craft-${GITHUB_SHA:-5}
+        version: ${{ github.sha }}
         promote: false
 
     - id: test
