@@ -15,3 +15,5 @@ jobs:
       with:
         credentials: ${{ secrets.gcp_credentials }}
         deliverables: app.yaml
+        version: ${{ github.ref }}-${{ github.sha }}
+        promote: false
