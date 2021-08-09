@@ -8,7 +8,7 @@ image:
   repository: gcr.io/cloud-native-hpc/craftcms
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "7.4"
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -28,13 +28,13 @@ podAnnotations: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
-securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: false
+  runAsNonRoot: true
+  runAsUser: 33
 
 service:
   type: LoadBalancer
@@ -53,17 +53,17 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-resources: {}
+resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
 
 autoscaling:
   enabled: false
@@ -79,10 +79,26 @@ tolerations: []
 affinity: {}
 
 sqlProxy:
-  enabled: true
+  enabled: false
   image: gcr.io/cloudsql-docker/gce-proxy:1.19.1
   connectionString: cloud-native-hpc:us-central1:test
   dbName: craft
   dbUser: craft
   dbPassword: craft
   dbPort: 5432
+
+config:
+  environment: dev
+  appId: CraftCMS--d337aaa2-c2ae-4cfb-9b3d-fe0c268ff065
+  securityKey: x5Ue5-VLPq1yFi680--L2CXGftqFcCjB
+  db:
+    driver: pgsql
+    server: "34.134.136.124"
+    port: "5432"
+    database: craft
+    user: craft
+    password: craft
+    schema: public
+    tablePrefix: ""
+  cpTrigger: admin
+  siteUrl: ""

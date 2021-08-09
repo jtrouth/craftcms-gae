@@ -1,0 +1,12 @@
+name: GAE Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  gae-deploy:
+    steps:
+    - id: deploy
+      uses: google-github-actions/deploy-appengine@main
+      with:
+        credentials: ${{ secrets.gcp_credentials }}

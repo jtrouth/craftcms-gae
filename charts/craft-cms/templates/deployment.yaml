@@ -49,8 +49,11 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
-          - name: CRAFT_STREAM_LOG
-            value: "true"
+          - name: PORT
+            value: "8080"
+          envFrom:
+          - configMapRef: 
+              name: {{ include "craft-cms.fullname" . }}
           livenessProbe:
             httpGet:
               path: /actions/app/health-check
