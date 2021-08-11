@@ -35,8 +35,8 @@ return [
                 [
                     'host' => App::env('MEMCACHED_IP'),
                     'persistent' => true,
-                    'port' => 11211,
-                    'retyInterval' => 15,
+                    'port' => App::env('MEMCACHED_PORT'),
+                    'retryInterval' => 15,
                     'status' => true,
                     'timeout' => 15,
                     'weight' => 1,

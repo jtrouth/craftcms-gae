@@ -4,16 +4,16 @@ COPY composer.json composer.json
 COPY composer.lock composer.lock
 RUN composer install --ignore-platform-reqs --no-interaction --prefer-dist
 
+# Runtime container
 FROM php:apache
-
 
 # Configure PHP for Cloud Run.
 # Precompile PHP code with opcache.
 USER root 
-RUN apt-get update && apt-get -qq install libpq-dev libmagickwand-dev libzip-dev
-RUN pecl install imagick && \
+RUN apt-get update && apt-get -qq install libpq-dev libmagickwand-dev libzip-dev libmemcached-dev
+RUN pecl install imagick memcached && \
     docker-php-ext-install -j "$(nproc)" opcache pdo_pgsql gd zip \
-    && docker-php-ext-enable imagick
+    && docker-php-ext-enable imagick memcached
 RUN a2enmod rewrite
 
 ENV CRAFT_STREAM_LOG true
